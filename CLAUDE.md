@@ -134,15 +134,23 @@ one started.
 | 1 · local ↔ local | **always**                                                                                                                | the consistency check passes, or every finding is declared with a reason          |
 | 2 · local ↔ Quest | **only when the task changed something that also exists on Quest** — a runner, a shared core, an sbatch script, a config | Quest matches local, proven with`md5sum`, core and runners transferred together |
 | 3 · local ↔ git   | **always**                                                                                                                | committed and pushed to`origin` and `backup`                                  |
+| 4 · results ↔ record | **only when a model has finished a whole benchmark *and* the user has confirmed the run** | that model's numbers are in its benchmark page and in both workbooks, rebuilt from the result files on disk |
 
 A change that touches only local files — documentation, notes, a script that never leaves the laptop
 — skips layer 2 and nothing else.
+
+**Layer 4 waits for the user, always.** A finished run is not a result until they say it is — the
+same gate as phase 3, for the same reason: whether the numbers can be believed is their call, not
+yours. Once they confirm it, that model reaches the record in **one** edit — the benchmark's own
+page, `Results.xlsx`, and `Final_Result.xlsx` if it is one of the six — because a model recorded in
+one of the three and not the others is exactly the drift the pass exists to catch. The user's rule,
+2026-09-07.
 
 **Skipping is a judgement you state, not one you make silently.** Say which layers you ran and why
 any was skipped, in the report. An unstated skip cannot be told apart from having forgotten, and a
 fixed pass is only worth having because it removes the chance to forget.
 
-Detail on any of the three, and when layer 2 applies at all:
+Detail on any of the four, and when layers 2 and 4 apply at all:
 `.claude/references/sync-and-consistency.md`.
 
 ## Rules that hold on every task
