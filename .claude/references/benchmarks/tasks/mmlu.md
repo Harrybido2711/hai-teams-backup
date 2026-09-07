@@ -1,5 +1,12 @@
 # MMLU — benchmark card
 
+<!-- size-budget: 7000 -->
+<!-- One job — the card for one benchmark — and it runs long for reasons bbh's does: nine slots,
+     two coexisting layouts, two prompts that are not interchangeable, two scorers still in play,
+     and a broken run kept as a record beside the folder that finished it. Raised 2026-09-07 when
+     the results table landed; the split that would shrink it is a scoring page like bbh's, and
+     that is worth doing when the uniform rescore happens, not before. -->
+
 General task ability, multiple choice. Accuracy. No LLM judge.
 
 ## Paths
@@ -40,6 +47,36 @@ the same condition. **Every row's `config` column names its route** — carried-
 **13 subjects, 3,943 items**, counted 2026-08-29. Sizes are very uneven (100 to 895), so the
 macro-average over subjects the workbook reports is **not** the same as pooling all items.
 `answer` in the data is an **index as a string** — `"2"` means `choices[2]`.
+
+## Results — every model that has a runner has run, verified 2026-09-07
+
+All 13 subjects / 3,943 items each. Macro is the mean of the 13 per-subject scores, read from the
+per-subject files — **never from `<vendor>_overall_results.csv`**, which is stale for two slots.
+
+| Slot | Folder | Macro | empty | Scorer | Among the six |
+|---|---|---|---|---|---|
+| OpenAI | `MMLU_GPT_5.6_Luna` | **0.9176** | 0 | `mmlu_lenient_v1` | yes |
+| Deepseek | `MMLU_Deepseek` | **0.9174** | 0 | per-runner `==` | yes |
+| Gemini | `MMLU_Gemini_Flash3.5lite_Google` | **0.9135** | 0 | `mmlu_lenient_v1` | yes — **two routes** |
+| Gemma | `MMLU_Gemma` | **0.9071** | 3 | per-runner `==` | yes |
+| XAI | `MMLU_XAI` | **0.9018** | 0 | per-runner `==` | yes |
+| Qwen | `MMLU_Qwen` | **0.8802** | 20 | per-runner `==` | yes |
+| — | `MMLU_Gemini_Flash2.5` | 0.8811 | 0 | per-runner `==` | no — superseded |
+| — | `MMLU_GPT_4o_mini` | 0.8011 | 0 | per-runner `==` | no — superseded |
+| — | `MMLU_Llama` | — | — | — | no — never produced rows |
+| — | `MMLU_Gemini_Flash3.5lite_OpenRouter` | 0.607 (unusable) | 2,188 | `mmlu_lenient_v1` | no — the broken run, kept as a record |
+
+**Gemini's column is two routes and is kept out of `Final_Result.xlsx`** — the user's decision,
+2026-09-07. It is a model result in `Results.xlsx` and nothing more until a single-route run exists.
+
+**Two scorers are still in play here, and that is the open item.** Only the two newest slots import
+`mmlu_eval_core`; the other seven carry the score their own runner wrote with `==`. Until a uniform
+rescore is run, a small gap between two columns may be the scorer rather than the model — the exact
+condition the one-scorer rule exists to remove, and bbh moved by 0.19–0.64 when it was fixed there.
+The rescore is offline work: the responses are all on disk.
+
+Per-subject cells live in the workbooks, `Results.xlsx` for all nine columns and `Final_Result.xlsx`
+for the five of the six it carries, each with its sources on the `Provenance` sheet.
 
 ## Two prompts, and they are not interchangeable
 

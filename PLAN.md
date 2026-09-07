@@ -81,11 +81,12 @@ produced the number is part of what the number means.
 **`Final_Result.xlsx` never borrows a number from a model that is not selected. A blank means the
 selected model has not been run on that sheet**, and it stays blank until it is. That rule is what
 makes the two files different in practice: `gemini-2.5-flash` and `gpt-4o-mini-2024-07-18` are
-superseded but are still what the bbh, MMLU, DocVQA and NegotiationToM runners call, so on those
-three sheets the `Gemini` and `OpenAI` columns of `Final_Result.xlsx` are **empty**. Nothing is lost
-— those runs keep their columns in `Results.xlsx`. **`Emo` is the one sheet already run on the
-current pair**, so there the two slots are filled. Closing the other three means re-running them, not
-editing a header.
+superseded but are still what the DocVQA and NegotiationToM runners call, so on those sheets the
+`Gemini` and `OpenAI` columns of `Final_Result.xlsx` are **empty**. Nothing is lost — those runs
+keep their columns in `Results.xlsx`. `Emo` and `Big Bench Hard` are filled for both slots, and on
+`MMLU` **`OpenAI` is filled while `Gemini` is deliberately not**: its run is complete but its 3,943
+rows are two routes, so the user decided on 2026-09-07 to keep it a model result in `Results.xlsx`
+rather than a reported one. Closing what is left means re-running it, not editing a header.
 
 One caveat inside that: the `Emo` result for `gpt-5.6-luna` is the **default `medium`** arm.
 The settled effort is `low`, and `results_eLow` has EU (0.650) but no EA, so **no complete EmoBench
@@ -96,8 +97,15 @@ score exists at the settled config** — one EA run at `effort=low` closes it.
 columns of `Final_Result.xlsx` are filled on that sheet and no longer belong to the superseded
 models. Those two keep columns of their own in `Results.xlsx`, and `gemini-2.5-flash`'s is a broken
 run — 62% truncated before the answer, 0.3455 — kept as a record and not re-run
-(`.claude/references/benchmarks/tasks/bbh.md`). **bbh, MMLU and DocVQA are what the "least filled"
-line above is about; bbh is now off that list.**
+(`.claude/references/benchmarks/tasks/bbh.md`).
+
+**MMLU is complete for every model that has a runner** — 13 subjects, 3,943 items, verified
+2026-09-07 — with two exceptions that are not gaps: `MMLU_Llama` never produced rows, and Llama was
+never among the six. `OpenAI` (0.9176) and `Gemini` (0.9135) both finished; the Gemini one is two
+routes and stays out of `Final_Result.xlsx`. **DocVQA is now the only sheet the "least filled" line
+above is still about.** MMLU's open item is not coverage but scoring: only its two newest slots
+import the shared matcher, the other seven carry their own runner's `==`, and the uniform rescore is
+offline work (`.claude/references/benchmarks/tasks/mmlu.md`).
 
 `kimi-k2.5` and `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` were run on bbh only (llama also
 on MMLU) and were never among the six.
@@ -114,9 +122,9 @@ from. The extras `Results.xlsx` holds and `Final_Result.xlsx` does not: `Kimi` a
 `Emo`.
 
 **A blank cell means no usable number, not a zero.** `Awareness` is blank throughout — no model has
-been scored on it yet. `MMLU`/`Qwen` is blank because `qwen_overall_results.csv` was written empty,
-`MMLU`/`Gemma` covers 8 of 13 subjects because the other five were never written, and `DocVQA` has no
-XAI or Deepseek run at all.
+been scored on it yet. `MMLU`/`Qwen` and `MMLU`/`Gemma` **are no longer blank** — both always had
+all 13 subjects on disk and it was their roll-up CSVs that were empty and partial, which is why the
+sheet is now built from the per-subject files. `DocVQA` has no XAI or Deepseek run at all.
 
 **`Big Bench Hard` is now scored uniformly, and its numbers were refreshed to match.** Every model
 on that sheet comes from `BBH_*/results/*_bbh_overall.csv` under the one shared lenient matcher
