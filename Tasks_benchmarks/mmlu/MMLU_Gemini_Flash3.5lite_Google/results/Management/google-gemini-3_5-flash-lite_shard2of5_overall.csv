@@ -1,0 +1,2 @@
+model,subject,n,score_sum,average_score,no_marker,empty_response,scorer,config
+google/gemini-3.5-flash-lite,Management,21,18,0.8571,0,0,mmlu_lenient_v1,max_tokens=8192;model=google/gemini-3.5-flash-lite;prompt=v2;seed=42

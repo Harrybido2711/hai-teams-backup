@@ -1,0 +1,17 @@
+{
+  "model": "google/gemini-3.5-flash-lite",
+  "asked": {
+    "max_tokens": 8192,
+    "seed": 42
+  },
+  "accepted": {
+    "max_tokens": 8192,
+    "seed": 42
+  },
+  "extra_body": {
+    "reasoning": {
+      "effort": "minimal"
+    }
+  },
+  "notes": []
+}

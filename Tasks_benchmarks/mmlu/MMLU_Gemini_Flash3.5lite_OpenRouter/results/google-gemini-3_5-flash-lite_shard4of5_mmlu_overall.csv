@@ -1,0 +1,15 @@
+model,subject,n,average_score,no_marker,empty_response,scorer
+google/gemini-3.5-flash-lite,Business_ethics,20,0.6,0,0,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Econometrics,22,0.8636,0,0,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Elementary_math,74,0.9595,0,0,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Formal_logic,22,0.8636,2,2,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Jurisprudence,20,0.95,0,0,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Logical_fallacies,31,0.871,2,2,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Management,19,0.8421,0,0,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Marketing,46,0.8913,5,5,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Miscellaneous,155,0.2387,114,114,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Moral_disputes,66,0.0,66,66,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Moral_scenarios,179,0.0,179,179,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Philosophy,59,0.0,59,59,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,Professional_accounting,54,0.0,54,54,mmlu_lenient_v1
+google/gemini-3.5-flash-lite,MACRO_AVG_over_13_subjects,,0.5446,,,mmlu_lenient_v1

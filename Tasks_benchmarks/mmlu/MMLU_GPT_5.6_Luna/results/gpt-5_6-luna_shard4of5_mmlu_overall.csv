@@ -1,0 +1,15 @@
+model,subject,n,average_score,no_marker,empty_response,scorer
+gpt-5.6-luna,Business_ethics,20,0.6,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Econometrics,22,0.7727,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Elementary_math,74,0.9595,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Formal_logic,22,1.0,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Jurisprudence,20,0.95,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Logical_fallacies,31,0.9355,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Management,19,0.7895,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Marketing,46,1.0,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Miscellaneous,155,0.9548,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Moral_disputes,66,0.8636,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Moral_scenarios,179,0.8994,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Philosophy,59,0.9322,0,0,mmlu_lenient_v1
+gpt-5.6-luna,Professional_accounting,54,0.963,0,0,mmlu_lenient_v1
+gpt-5.6-luna,MACRO_AVG_over_13_subjects,,0.8939,,,mmlu_lenient_v1

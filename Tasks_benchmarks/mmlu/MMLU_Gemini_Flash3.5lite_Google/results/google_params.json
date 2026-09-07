@@ -1,0 +1,8 @@
+{
+  "model": "google/gemini-3.5-flash-lite",
+  "api_model": "gemini-3.5-flash-lite",
+  "route": "google_aistudio",
+  "max_output_tokens": 8192,
+  "seed": 42,
+  "thinking": "include_thoughts=None thinking_budget=128"
+}

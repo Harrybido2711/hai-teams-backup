@@ -1,0 +1,48 @@
+Gemini 3.5 Flash-Lite (Google AI Studio): model=google/gemini-3.5-flash-lite api_model=gemini-3.5-flash-lite subjects=13 prompt=v2 shard=2/5 thinking=include_thoughts=None thinking_budget=128 max_output_tokens=8192 seed=42
+  resume: 20 done, 0 empty row(s) will be retried
+Business_ethics: 0.85  (n=20, no_marker=0, empty=0)
+  resume: 23 done, 0 empty row(s) will be retried
+Econometrics: 0.8696  (n=23, no_marker=0, empty=0)
+  resume: 76 done, 0 empty row(s) will be retried
+Elementary_math: 0.9868  (n=76, no_marker=0, empty=0)
+  resume: 25 done, 1 empty row(s) will be retried
+Formal_logic: 0.9231  (n=26, no_marker=0, empty=0)
+  resume: 22 done, 0 empty row(s) will be retried
+Jurisprudence: 1.0  (n=22, no_marker=0, empty=0)
+  resume: 33 done, 0 empty row(s) will be retried
+Logical_fallacies: 0.8788  (n=33, no_marker=0, empty=0)
+  resume: 20 done, 1 empty row(s) will be retried
+Management: 0.8571  (n=21, no_marker=0, empty=0)
+  resume: 42 done, 5 empty row(s) will be retried
+Marketing: 1.0  (n=47, no_marker=0, empty=0)
+  resume: 97 done, 60 empty row(s) will be retried
+  [Miscellaneous] 100/783
+  [Miscellaneous] 120/783
+  [Miscellaneous] 140/783
+Miscellaneous: 0.9809  (n=157, no_marker=1, empty=0)
+  resume: 0 done, 70 empty row(s) will be retried
+  [Moral_disputes] 20/346
+  [Moral_disputes] 40/346
+  [Moral_disputes] 60/346
+Moral_disputes: 0.9429  (n=70, no_marker=0, empty=0)
+  resume: 0 done, 179 empty row(s) will be retried
+  [Moral_scenarios] 20/895
+  [Moral_scenarios] 40/895
+  [Moral_scenarios] 60/895
+  [Moral_scenarios] 80/895
+  [Moral_scenarios] 100/895
+  [Moral_scenarios] 120/895
+  [Moral_scenarios] 140/895
+  [Moral_scenarios] 160/895
+Moral_scenarios: 0.8715  (n=179, no_marker=0, empty=0)
+  resume: 0 done, 63 empty row(s) will be retried
+  [Philosophy] 20/311
+  [Philosophy] 40/311
+  [Philosophy] 60/311
+Philosophy: 0.9048  (n=63, no_marker=0, empty=0)
+  resume: 0 done, 57 empty row(s) will be retried
+  [Professional_accounting] 20/282
+  [Professional_accounting] 40/282
+Professional_accounting: 1.0  (n=57, no_marker=0, empty=0)
+usage this shard: {'thinking_tokens': 105274, 'prompt_tokens': 61210, 'output_tokens': 74696, 'calls': 436, 'max_tokens_finish': 0}
+done -> /gpfs/projects/p32983/Tasks_benchmarks/mmlu/MMLU_Gemini_Flash3.5lite_Google/results

@@ -1,0 +1,2 @@
+model,subject,n,score_sum,average_score,no_marker,empty_response,scorer,config
+gpt-5.6-luna,Miscellaneous,155,148,0.9548,0,0,mmlu_lenient_v1,max_completion_tokens=16384;model=gpt-5.6-luna;prompt=v2;reasoning_effort=low;seed=42
