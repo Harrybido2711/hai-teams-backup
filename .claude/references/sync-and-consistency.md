@@ -21,6 +21,10 @@ Layers 1 and 3 always run. Layer 2 is the only conditional one, and the test is 
 task change a file that also exists on the cluster?** A runner, a shared core, an sbatch script or a
 config: yes. Documentation, a benchmark page, a local-only script, a note: no.
 
+**When the answer is yes, the unit is the whole change, not the file that made it yes** — every
+file this task modified that also exists on the cluster goes up together and is hashed together
+(`CLAUDE.md`). Half a change on Quest is drift that no later check attributes to this task.
+
 Two ways to get it wrong: answering *no* because nothing is running — irrelevant, the question is
 whether the file exists in both places, since the next submit reads whatever is there; and answering
 *yes* by transferring under a live job — a wasted transfer, because the process has already imported

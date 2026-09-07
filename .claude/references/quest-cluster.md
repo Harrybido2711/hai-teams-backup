@@ -18,10 +18,13 @@ Transfer with `ssh quest "cat > $REMOTE/$f" < $LOCAL/$f`, then **verify with `md
 assume a transfer landed. **Never overwrite `.env` on Quest** and never copy it out — it exists only
 there; if it goes missing, `cp ../EmoBench-master/.env .env`.
 
-**Sync a benchmark's shared core together with its runners, always.** The runners import from the
-core, so a runner transferred without it dies at import, and a core transferred without the runners
-breaks whichever runner used a signature that changed. **Check the whole set before submitting, not
-just the file you edited** — drift is never confined to the model being worked on.
+**Transfer every locally modified file as one set, not the one you happened to edit.** The unit of
+a sync is the whole change — everything touched since the last transfer goes up together and is
+hashed together. The user's rule, 2026-09-07. The shared core and its runners are the sharpest case:
+the runners import the core, so a runner sent without it dies at import and a core sent without the
+runners breaks whichever runner used a signature that changed. But it is not only that pair —
+**compare the whole set before submitting**, because drift is never confined to the model being
+worked on.
 
 ### The pre-submit gate, and how it goes blind
 

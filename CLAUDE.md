@@ -153,7 +153,9 @@ Detail on any of the three, and when layer 2 applies at all:
   `check_quest_sync.py` resolves that one directory and globs `NEG_*`, so an `sbatch` for any other
   benchmark passes a gate that compared someone else's files and said nothing about yours. Verified
   2026-08-22 — the hook is live and compares 41 files, all of them NegotiationToM's.
-- **Sync the shared core and its runners together, or not at all.** The runners import from the core.
+- **A sync's unit is the whole change, not one file.** Every locally modified file since the last
+  transfer goes up together and is verified together — the shared core and its runners always, since
+  the runners import the core. The user's rule, 2026-09-07.
 - **Code flows up to Quest, results flow down.** Never the reverse.
 - **Name a results directory after the model that produced it.** The user's convention, 2026-08-22.
   It is what makes our output distinguishable from the results a vendored copy shipped with — an
