@@ -89,7 +89,7 @@ a check you had to remember to run is a check that will be skipped.
   `fix-broken-run` when it has to be killed. `tracker` writes the outcome to the problem log.
 
 **5 · Keep everything in sync.** Not a phase — the thing that runs through the other four. The
-obligation is the next section; `references/sync-and-consistency.md` is the three layers and when
+obligation is the next section; `references/sync-and-consistency.md` is the four layers and when
 each applies, `references/doc-check.md` is what a check finding means, and
 `check_docs.py --impact <term>` is what you run **before** editing to find every file a change
 touches.
