@@ -91,11 +91,13 @@ One caveat inside that: the `Emo` result for `gpt-5.6-luna` is the **default `me
 The settled effort is `low`, and `results_eLow` has EU (0.650) but no EA, so **no complete EmoBench
 score exists at the settled config** — one EA run at `effort=low` closes it.
 
-**bbh now has runners for the current pair** — `BBH_Gemini_Flash3.5lite_OpenRouter` and
-`BBH_GPT_5.6_Luna`, added 2026-08-29 — but no results from them yet, so its Gemini and OpenAI
-columns still belong to the superseded models. Its Gemini column is worse than superseded: those
-rows are a broken run, 62% truncated before the answer, and cannot be reproduced from the folder
-(`.claude/references/benchmarks/tasks/bbh.md`).
+**bbh is complete for all six** — `BBH_Gemini_Flash3.5lite_OpenRouter` (0.9375) and
+`BBH_GPT_5.6_Luna` (0.9349), added 2026-08-29, have their full 20 tasks, so the Gemini and OpenAI
+columns of `Final_Result.xlsx` are filled on that sheet and no longer belong to the superseded
+models. Those two keep columns of their own in `Results.xlsx`, and `gemini-2.5-flash`'s is a broken
+run — 62% truncated before the answer, 0.3455 — kept as a record and not re-run
+(`.claude/references/benchmarks/tasks/bbh.md`). **bbh, MMLU and DocVQA are what the "least filled"
+line above is about; bbh is now off that list.**
 
 `kimi-k2.5` and `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` were run on bbh only (llama also
 on MMLU) and were never among the six.

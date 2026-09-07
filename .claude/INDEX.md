@@ -36,7 +36,8 @@ page, and carrying one across benchmarks is the mistake that split is there to p
   there starts at phase 1 or 2 rather than 3.
 - **Two runners comply with the model-parameter rule; every other one does not.** bbh's
   `BBH_GPT_5.6_Luna` and `BBH_Gemini_Flash3.5lite_OpenRouter` (added 2026-08-29) negotiate their
-  surface and set a cap — but are unpiloted, and their caps are chosen rather than measured. The
+  surface and set a cap; their caps are chosen rather than measured, but both have since run all
+  4,833 rows with `no_marker=0`, so nothing was truncated at them. The
   rest set no thinking or output cap, and bbh's eight leave it open **deliberately**: setting one
   changes what the model emits and would make new rows incomparable with the 4,833 already on disk.
   See [`references/model-parameters.md`](references/model-parameters.md).

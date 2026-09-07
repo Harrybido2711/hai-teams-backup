@@ -26,16 +26,12 @@ roll-up. The 20 task JSONs live in `data/` and are shared. **Result files are na
 not the folder**, and `--model` sets both what is called and what is written, so a copied folder
 cannot relabel another model's numbers.
 
-Slots **with results**: `BBH_Deepseek` · `BBH_Gemma` · `BBH_Qwen` · `BBH_XAI` · `BBH_Kimi` ·
-`BBH_Llama` · `BBH_Gemini_Flash2.5` · `BBH_GPT_4o_mini`. The last two are named for the superseded
-models they call, so their numbers are not mistaken for the current slots'.
-
-Slots **with a runner and no results**, added 2026-08-29:
-`BBH_Gemini_Flash3.5lite_OpenRouter` (`google/gemini-3.5-flash-lite`, the settled route) and
-`BBH_GPT_5.6_Luna` (`gpt-5.6-luna`, `reasoning_effort="low"`). These are two of the six. **Neither
-has been piloted and their output caps are chosen rather than measured** — `--limit 20` and check
-`no_marker` first. They are also the only two runners here that comply with the model-parameter
-rule; the other eight set no reasoning or output cap, deliberately, so their rows stay comparable.
+**All ten slots have results**, and `BBH_Gemini_Flash2.5` / `BBH_GPT_4o_mini` are named for the
+superseded models they call so their numbers are not mistaken for the current slots'. The two added
+2026-08-29 — `BBH_Gemini_Flash3.5lite_OpenRouter` and `BBH_GPT_5.6_Luna` — are the only runners here
+that comply with the model-parameter rule; the other eight set no reasoning or output cap,
+deliberately, so their rows stay comparable. Their caps are still **chosen rather than measured**,
+but both ran 4,833 rows with `no_marker=0`, so nothing was truncated at them.
 
 **20 tasks, 4,833 items, and that is the settled scope** — seven of upstream's 27 are not vendored
 here, and the user decided on 2026-08-29 to keep it that way: what was run before is what this
@@ -45,6 +41,35 @@ new ones at 27. Verified 2026-08-29: every example carries a non-empty `input` a
 
 Full tree, the six matcher branches and the task inventory: **`Tasks_benchmarks/bbh/README.md`** —
 the benchmark's own committed notes, and the place to read before touching it.
+
+## Results — the six are complete, verified 2026-09-07
+
+Every slot is at the full 20 tasks / 4,833 rows except Kimi. Macro is the mean of the 20 per-task
+`average_score` values read from **`results/<task>/<model>_overall.csv`** — not from the slot-level
+`results/*_bbh_overall.csv`, which is stale for two slots (see the traps).
+
+| Slot | Folder | Macro | no_marker | empty | Among the six |
+|---|---|---|---|---|---|
+| Gemma | `BBH_Gemma` | **0.9684** | 0 | 0 | yes |
+| Deepseek | `BBH_Deepseek` | **0.9616** | 0 | 0 | yes |
+| XAI | `BBH_XAI` | **0.9461** | 0 | 0 | yes |
+| Gemini | `BBH_Gemini_Flash3.5lite_OpenRouter` | **0.9375** | 0 | 0 | yes |
+| OpenAI | `BBH_GPT_5.6_Luna` | **0.9349** | 0 | 0 | yes |
+| Qwen | `BBH_Qwen` | **0.9339** | 16 | 1 | yes |
+| — | `BBH_Llama` | 0.9109 | 37 | 0 | no |
+| — | `BBH_GPT_4o_mini` | 0.8451 | 4 | 0 | no — superseded |
+| — | `BBH_Kimi` | 0.9310 *(10 tasks)* | 1 | 1 | no |
+| — | `BBH_Gemini_Flash2.5` | 0.3455 | 3,002 | 0 | no — superseded, broken run |
+
+Qwen's 17 unusable rows are all in `dyck_languages` and are scored wrong, not dropped; that task
+reads 0.696. It is what the DeepInfra repair of 2026-08-30 left of 256.
+
+**Per-task cells live in the workbooks, not here** — `Final_Result.xlsx` § Big Bench Hard for the
+six, `Results.xlsx` for all ten, each with the sources on its `Provenance` sheet. Both were
+refreshed from these files on 2026-09-07: 76 cells changed in `Results.xlsx`, 0 in
+`Final_Result.xlsx`, which already matched.
+
+**bbh ran locally, not on Quest** — `sacct` has no bbh job. Quest holds the code and data only.
 
 ## Scoring — one matcher, imported, for every model
 
@@ -58,23 +83,25 @@ The rule of thumb worth carrying out of it: **a task at exactly 0.000 with `no_m
 
 ## Its own traps
 
-- **Gemini's results are a broken run, not a low score.** 62% of its 4,833 responses (3,002) stop
-  mid-reasoning and never emit `Final Answer:`. The rescore gives ~0.34 against the ~0.93 the
-  workbook reports, and the gap does **not** close leniently — the data is truncated, so the
-  workbook's Gemini column came from a run that is not in this folder. **Re-run, do not rescore.**
-  No output cap is set in the runner, so raising one is not the fix.
-- **The other five reported models reproduce `Final_Result.xlsx` exactly** — 102 of 120 cells, all
-  18 misses Gemini. The workbook already held the lenient numbers; the code and the stored `score`
-  columns were what had not caught up.
+- **`BBH_Gemini_Flash2.5` is a broken run, not a low score.** 62% of its 4,833 responses (3,002)
+  stop mid-reasoning and never emit `Final Answer:`, so no scorer can rescue them and 0.3455 is what
+  it is. It is **not** re-run: the Gemini slot is now `gemini-3.5-flash-lite`, which is complete.
+  The row keeps its own column in `Results.xlsx` and appears nowhere in `Final_Result.xlsx`.
+- **The slot-level `results/*_bbh_overall.csv` is stale for Gemma and Qwen.** The DeepInfra repair
+  of 2026-08-30 re-ran only the affected tasks and overwrote each roll-up with just those —
+  `MACRO_AVG_over_5_tasks` = 0.879 for Gemma, `over_13_tasks` = 0.9146 for Qwen, against the true
+  0.9684 and 0.9339. **Aggregate the per-task files instead**; that is what both workbooks now do.
+- **`Final_Result.xlsx` reproduces the per-task files exactly** — all 126 six-slot cells, 0 blanks,
+  checked 2026-09-07. `Results.xlsx` did not, and was refreshed from them.
 - **`kimi-k2.5` and `Llama-4-Maverick` are not among the six.** bbh is the only benchmark either ran
   on; Kimi has 10 of 20 tasks. `PLAN.md` and `Final_Result.xlsx` are the coverage claim, never
   `ls`.
 - **`_superseded/` in `BBH_Gemma` and `BBH_Kimi`** holds older duplicates in the pre-restructure
   format, parked rather than deleted. Never read a number out of one.
-- **No `seed` anywhere, Kimi at `temperature=1`, and no reasoning or output cap on any runner.**
-  Nothing here is reproducible. The caps are **deliberately still open**: setting one changes what
-  the models emit and would make new rows incomparable with the 4,833 on disk. Cap them when bbh is
-  re-run. Per-model parameters, with `file:line`: [bbh-parameters.md](bbh-parameters.md).
+- **No `seed` anywhere, Kimi at `temperature=1`, and no reasoning or output cap on the eight older
+  runners.** Nothing here is reproducible. Those caps are **deliberately still open**: setting one
+  changes what the models emit and would make new rows incomparable with the 4,833 on disk. Cap them
+  when bbh is re-run. Per-model parameters, with `file:line`: [bbh-parameters.md](bbh-parameters.md).
 
 ## Fixed on 2026-08-29 — do not re-report these
 
