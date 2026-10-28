@@ -30,9 +30,9 @@ hai-teams/
 ├── Random_stuff/                        1,032 files · 75M — parked, not part of the taxonomy
 │   ├── SQA Release 1.0/ · TruthfulQA-main/ · sycophancy-eval-main/
 ├── LLM_as_judge/                        judge methodology, not a benchmark
-│   ├── README.md                        literature review: choosing the judge model, building the pipeline
-│   ├── papers/                          the review's ten PDFs (2025–2026)
-│   └── JUDGE_SELECTION.md               the one judge document: decision, pilot and the judge record
+│   ├── papers/                          the judge literature's PDFs (2025–2026)
+│   ├── JUDGE_SELECTION.md               the main judge document: decision, pilot and the judge record
+│   └── PILOT_FINALISTS.md               the pilot's three finalists compared, and the case for Haiku 5.5
 ├── .claude/                             INDEX, tools, agents, references, workflows (see below)
 ├── CLAUDE.md                            planner rules only; `.claude/INDEX.md` is the entry point
 ├── AGENTS.md                            situation → fastest first move, for Claude and Codex alike
@@ -214,7 +214,8 @@ Each file is authoritative on one thing; nothing is duplicated between them.
 | `.claude/references/sync-and-consistency.md`         | the three sync layers — local↔local, local↔Quest, local↔git — what enforces each, and when the Quest one applies at all |
 | `.claude/references/doc-check.md`                    | what every consistency-check finding means and how to clear it — read this when a commit is blocked |
 | `.claude/references/benchmarks/<group>/<name>.md`    | per-benchmark operating detail: Quest path, layout, verified counts, output naming, run order, its own traps — one page for each of the ten, plus a group page for what a process folder's benchmarks share. The rest of `.claude/` is benchmark-agnostic on purpose |
-| `LLM_as_judge/JUDGE_SELECTION.md`                    | the one judge document: which benchmarks need a judge, the literature, the chosen judges and the pilot comparing them, and the filled judge record (§7) — the PDFs are in `LLM_as_judge/papers/` |
+| `LLM_as_judge/JUDGE_SELECTION.md`                    | the main judge document: which benchmarks need a judge, the literature, the chosen judges and the pilot comparing them, and the filled judge record (§7) — the PDFs are in `LLM_as_judge/papers/` |
+| `LLM_as_judge/PILOT_FINALISTS.md`                    | the judge pilot's finalists — Kimi K2.6, Haiku 4.5, Haiku 5.5 — side by side, and the case for and against Haiku 5.5 |
 | `Interpersonal_.../NegotiationToM/negotiation.md`    | current NegotiationToM results, dataset traps, reasoning-token cost, silent-failure catalogue                                                 |
 | `Interpersonal_.../NegotiationToM/ISSUES.md`         | problems already hit, what was rejected, what shipped                                                                                         |
 | `Interpersonal_.../NegotiationToM/DATA_NOTES.md`     | cutoff tiling, the`"None"` sentinel, expected row counts                                                                                    |
@@ -275,7 +276,8 @@ follows, and none holds a benchmark-specific path — so they are adapted to a t
    the judge pilot's runners (2026-10-19): `gpt-5.6-luna` on a 10% sample of each, graded by the
    four candidate judges and compared by the advisor's rule — cheap if they agree, expensive only
    if it is clearly better (`LLM_as_judge/JUDGE_SELECTION.md` §6.4). GPT's responses were
-   generated on Quest 2026-10-19 (jobs 4480406, 4480407); the judge run is next.
+   generated on Quest 2026-10-19 (jobs 4480406, 4480407) and judged by all four the same day (jobs
+   4482838, 4506836). Kimi K2.6 or Haiku 5.5 is the open choice (`LLM_as_judge/PILOT_FINALISTS.md`).
 4. **Provider coverage is uneven.** DocVQA has two providers where bbh and mmlu have seven; whether
    that gap is closed is a scope decision, not an oversight to fix silently.
 5. **The pre-submit Quest gate covers one benchmark.** `check_quest_sync.py` hardcodes

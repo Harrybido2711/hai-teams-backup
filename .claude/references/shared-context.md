@@ -10,7 +10,8 @@ stay in sync as the project moves — prefer them over anything remembered from 
 |---|---|
 | `.claude/references/benchmarks/<group>/<name>.md` | **Everything specific to one benchmark** — its Quest path, layout, expected counts, output paths, run order and its own traps. Read the page for the benchmark you are working on, and its group page with it; a number from another page is not transferable |
 | `.claude/references/benchmarks/README.md` | The index of all ten pages, and what a page is required to establish before its numbers are used |
-| `LLM_as_judge/JUDGE_SELECTION.md` | **Everything about LLM judges, in one file** — which benchmarks need one, the literature, which judge model and why, the pilot comparing the four candidates, and the filled judge record a judged number needs before it is used (§7). Fifteen 2026 top-venue papers, PDFs in `LLM_as_judge/papers/` |
+| `LLM_as_judge/JUDGE_SELECTION.md` | **Everything about LLM judges** — which benchmarks need one, the literature, which judge model and why, the pilot comparing the four candidates, and the filled judge record a judged number needs before it is used (§7). Fifteen 2026 top-venue papers, PDFs in `LLM_as_judge/papers/` |
+| `LLM_as_judge/PILOT_FINALISTS.md` | **The judge pilot's three finalists side by side** — Kimi K2.6, Haiku 4.5 and Haiku 5.5 on GPT's scores, agreement with the humans, stability and cost, and the case for and against Haiku 5.5. Read it when choosing the judge, or when a judge's pilot number is needed |
 | `PLAN.md` | Repo map: what each folder is, provider coverage, and the state of each run |
 
 A benchmark's own `*_script.md` / `*_SCRIPT.md` is authoritative on what a task *means*, but their

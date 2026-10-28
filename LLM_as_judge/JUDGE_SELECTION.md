@@ -5,8 +5,10 @@
      pilot, and the record every judged number needs. Large because it is all of them. -->
 
 **Status, 2026-10-19.**
-- **This is the only judge document.** On 2026-10-19 the user had `LLM_as_judge/` cut to this one
-  file. What the others held now lives here: the documentation rule and the filled judge record
+- **This is the main judge document.** On 2026-10-19 the user had `LLM_as_judge/` cut to this one
+  file. On 2026-10-28 they asked for the pilot's finalists to be written up beside it, so the
+  three-way comparison now lives in [PILOT_FINALISTS.md](PILOT_FINALISTS.md). What the others held
+  now lives here: the documentation rule and the filled judge record
   (§7), the decided and open questions (§1, §8), and the paper list (§9). The per-paper, page-cited
   extractions were not carried over; the PDFs are in `papers/`.
 - **The provisional default judge is Claude Haiku 4.5** — the pilot argues against it (§6.4).
@@ -407,28 +409,12 @@ others, it is not considered further.**
   - **Under the user's rule it is dropped**: no better where it answers, absent on SOP and on 4 of
     27 MultiChallenge items, and the most expensive. Proposed 2026-10-19; the user's confirmation is
     pending.
-- **Result for the other three** — every set complete, 2026-10-19 (job 4506836; Haiku 5.5 left 4
-  of 3,162 SOP lines unparsed).
-  - *GPT's scores barely depend on the judge.* MultiChallenge as above. GPT's 48 SOPs: per-ablation
-    F1 within 0.08 across the three (td 0.59–0.67, td_kf 0.88–0.90, td_kf_act 0.91–0.93), the
-    ablations in the same order, line decisions agreeing 89.6–92.2% (κ 0.69–0.76).
-  - *Against the humans, Kimi K2.6 is closest on 6 of 8 measures* (not QA clarity, not SOP recall
-    correlation): QA QWK averaged over the four criteria 0.49, against 0.38 (Haiku 4.5) and 0.25
-    (Haiku 5.5); SOP precision / recall MAE 0.175 / 0.116, against 0.193 / 0.185 and 0.224 / 0.145.
-    Paired bootstrap over the 30 anchor items (4,000 resamples): Kimi − Haiku 5.5 on the QA average
-    +0.24 [−0.01, +0.37]; Kimi's SOP precision MAE below Haiku 5.5's by 0.05 [0.00, 0.10], its
-    recall MAE below Haiku 4.5's by 0.07 [0.01, 0.13]; no single QA criterion separates at n = 30.
-  - *Weak spots.* Haiku 5.5 on QA compactness (QWK 0.12; mean 1.73 against the humans' 1.17 — it
-    marks concise answers down). All three are lenient on SOP, crediting about 0.2 more precision
-    than the humans (upstream's GPT-4: 0.02).
-  - *Stability* (share of units whose replicates disagree, SOP): Haiku 4.5 1.0–1.4% at temperature
-    0; Haiku 5.5 7–8%; Kimi 8–10.5% even at temperature 0 on bf16 — three replicates matter for both.
-  - *Full-run cost* per evaluated model, the sample's billed cost (anchors excluded) times ten:
-    Haiku 4.5 ≈ $50, Kimi K2.6 ≈ $35, Haiku 5.5 ≈ $6.
-  - **Under the advisor's rule:** Haiku 4.5 is out — never better than Kimi, and dearer. Kimi and
-    Haiku 5.5 give GPT about the same scores; against the humans Kimi is ahead on almost every
-    measure, by a margin n = 30 cannot confirm, at about six times the price. Kimi if agreement with
-    humans decides, Haiku 5.5 if the outcomes do — the user's and the advisor's call (§8).
+- **Result for the other three** — every set complete, 2026-10-19 (job 4506836). GPT's scores
+  barely depend on the judge. Against the humans Kimi K2.6 is closest, by a margin n = 30 cannot
+  confirm. Haiku 4.5 is out: never better than Kimi, and dearer. Kimi if agreement with the humans
+  decides, Haiku 5.5 if the outcomes do — the user's and the advisor's call (§8). **The numbers,
+  and the case for and against Haiku 5.5, are in [PILOT_FINALISTS.md](PILOT_FINALISTS.md)**
+  (2026-10-28).
 
 ## 7. The judge record — what must be documented, and what is
 
@@ -594,7 +580,7 @@ Three facts that were wrong or unknown before, all found by reading code rather 
 
 ## 8. What is still open
 
-- **Which judge: Kimi K2.6 or Haiku 5.5** (§6.4) — the user's and the advisor's decision. Haiku 4.5
+- **Which judge: Kimi K2.6 or Haiku 5.5** (§6.4; the case for each, [PILOT_FINALISTS.md](PILOT_FINALISTS.md)) — the user's and the advisor's decision. Haiku 4.5
   and Sonnet 5.5 are out on the pilot's evidence, Sonnet pending the user's confirmation.
 - **The bake-off and the human labels.** Neither exists yet. Until both do, any judge is a
   provisional choice, not a result.
